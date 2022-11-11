@@ -14,6 +14,12 @@ const routes = [
     },
 
     {
+        path: '/formulario-vendas',
+        name: 'formulario-vendas',
+        component: require('../components/views/FormularioVendas.vue').default
+    },
+
+    {
         path: '*',
         component: require('../components/NotFound.vue').default
     }

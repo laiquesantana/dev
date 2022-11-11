@@ -59,6 +59,16 @@
             <!-- /.profile -->
 
             <li class="nav-item">
+                <router-link :to="{ name: 'formulario-vendas' }" class=" nav-link">
+                  <i class="nav-icon fas fa-address-card purple"></i>
+                  <p>
+                    Formulário Vendas
+                  </p>
+                </router-link>
+              </li>
+              <!-- /.profile -->
+
+            <li class="nav-item">
               <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">
                 <i class="nav-icon fas fa-power-off red"></i>
