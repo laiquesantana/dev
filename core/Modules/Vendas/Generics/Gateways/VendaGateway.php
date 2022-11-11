@@ -8,6 +8,6 @@ use dev\Modules\Vendas\Generics\Entities\Vendas;
 interface VendaGateway
 {
     public function save(VendasCollection $vendaEntity): VendasCollection;
-    
+
     public function delete(Vendas $vendaEntity): bool;
 }

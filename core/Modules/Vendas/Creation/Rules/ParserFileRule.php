@@ -21,7 +21,7 @@ class ParserFileRule
         try {
             return $this->parserFile();
         } catch (\Throwable $ex) {
-            throw new ParserFileException('Error ao fazer o parser o arquivo', 500, $ex);
+            throw new ParserFileException('Error ao fazer o parser do arquivo', 400, $ex);
         }
     }
 
@@ -34,6 +34,10 @@ class ParserFileRule
         array_shift($rows);
 
         $vendaCollection = new VendasCollection();
+
+        if ($rows[0] == "") {
+            throw new ParserFileException('Arquivo sem dados de venda');
+        }
         foreach ($rows as $row => $data) {
             if (!empty($data) && $data != '') {
                 $venda = new Vendas();

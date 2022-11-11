@@ -4,6 +4,8 @@ namespace dev\Modules\Vendas\Creation;
 
 use dev\Dependencies\Interfaces\LogInterface;
 use dev\Modules\Vendas\Creation\Builders\Builder;
+use dev\Modules\Vendas\Creation\Exceptions\ParserFileException;
+use dev\Modules\Vendas\Creation\Exceptions\SaveVendaException;
 use dev\Modules\Vendas\Creation\Requests\Request;
 use dev\Modules\Vendas\Creation\Responses\ResponseInterface;
 use dev\Modules\Vendas\Creation\Rules\ParserFileRule;
@@ -41,7 +43,44 @@ class UseCase
                 )
                 ->build();
 
-        }catch (\Throwable $exception) {
+        }catch (SaveVendaException $exception) {
+            $this->logger->error(
+                self::LOG_PREFIX . 'Venda save error',
+                [
+                    'exception' => get_class($exception),
+                    'message' => $exception->getMessage(),
+                    'previous' => [
+                        'exception' => $exception->getPrevious() ? get_class($exception->getPrevious()) : null,
+                        'message' => $exception->getPrevious() ? $exception->getPrevious()->getMessage() : null
+                    ],
+                    'data' => [
+                        'venda' => $request->getVenda(),
+                    ]
+                ]
+            );
+
+            throw  $exception;
+        }
+        catch (ParserFileException $exception) {
+            $this->logger->error(
+                self::LOG_PREFIX . 'Pasrser error',
+                [
+                    'exception' => get_class($exception),
+                    'message' => $exception->getMessage(),
+                    'previous' => [
+                        'exception' => $exception->getPrevious() ? get_class($exception->getPrevious()) : null,
+                        'message' => $exception->getPrevious() ? $exception->getPrevious()->getMessage() : null
+                    ],
+                    'data' => [
+                        'venda' => $request->getVenda(),
+                    ]
+                ]
+            );
+
+            throw  $exception;
+        }
+
+        catch (\Throwable $exception) {
             $this->logger->error(
                 self::LOG_PREFIX . 'Generic error',
                 [
@@ -52,7 +91,7 @@ class UseCase
                         'message' => $exception->getPrevious() ? $exception->getPrevious()->getMessage() : null
                     ],
                     'data' => [
-                        'user' => $request->getVenda(),
+                        'venda' => $request->getVenda(),
                     ]
                 ]
             );
