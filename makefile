@@ -18,7 +18,7 @@ start-cache:
 	@docker-compose up -d cache
 
 test: start-php
-	docker exec -ti api-consult-php ./vendor/bin/phpunit tests
+	docker exec -ti travellist-app ./vendor/bin/phpunit tests
 
 cache redis: start-cache
 	@docker-compose exec cache redis-cli
