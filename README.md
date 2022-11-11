@@ -20,7 +20,7 @@
 - docker-compose exec app php artisan key:generate
 - docker-compose exec app npm install
 - docker-compose exec app npm run production
-
+- docker-compose exec app composer dump-autoload
 ## Passo 2
 - docker-compose exec app bash ou através do makefile commando make php
 
