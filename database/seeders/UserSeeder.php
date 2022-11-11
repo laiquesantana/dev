@@ -5,8 +5,6 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 use App\User;
 class UserSeeder extends Seeder
 {
@@ -20,9 +18,9 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'id' => \Str::orderedUuid(),
             'name' => 'Adminstrador Geral',
-            'email' => 'laiquesantana@gmail.com',
-            'cpf' => '06001814562',
-            'password' => Hash::make('adminsgs'),
+            'email' => 'eureciclo@gmail.com',
+            'cpf' => '06001814563',
+            'password' => Hash::make('eureciclo'),
             'tenant_id' => 1,
             'tipo' => 'admin',
             'created_at' => Carbon::now(),

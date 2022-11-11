@@ -43,4 +43,9 @@ class FormularioVendasController extends Controller
             $useCase->getResponse()->getStatus()->getCode()
         );
     }
+
+    public function destroy(Request $request, int $id)
+    {
+        return $this->vendasRepository->deletarVenda($id);
+    }
 }

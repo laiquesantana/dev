@@ -15,6 +15,16 @@ class VendasRepository implements VendaGateway
         return FormularioVendas::all();
     }
 
+    public function deletarVenda(int $idVenda)
+    {
+        try {
+            return FormularioVendas::findOrFail($idVenda)->delete();
+
+        }catch (\Throwable $exception){
+            throw new DatabaseException("Problema ao deletar venda");
+        }
+    }
+
     public function save(VendasCollection $vendasCollection): VendasCollection
     {
         try {
