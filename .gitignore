@@ -1,0 +1,17 @@
+/node_modules
+/public/hot
+/public/storage
+/public/uploads
+/storage/*.key
+/vendor
+.env
+.env copy
+sigcnew.pem
+/scripts/deploy
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+config/database.php

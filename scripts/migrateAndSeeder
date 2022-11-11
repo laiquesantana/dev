@@ -1,0 +1,13 @@
+#!/bin/bash
+
+php artisan migrate:fresh
+
+php artisan permission:create-role superAdmin api
+php artisan permission:create-role consulta api
+php artisan permission:create-role cadastro api
+
+
+php artisan db:seed
+
+php artisan passport:install --force
+
