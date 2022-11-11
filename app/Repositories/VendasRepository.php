@@ -19,8 +19,7 @@ class VendasRepository implements VendaGateway
     {
         try {
             return FormularioVendas::findOrFail($idVenda)->delete();
-
-        }catch (\Throwable $exception){
+        } catch (\Throwable $exception) {
             throw new DatabaseException("Problema ao deletar venda");
         }
     }
@@ -45,15 +44,5 @@ class VendasRepository implements VendaGateway
         }
 
         return $vendasCollection;
-    }
-
-    public function update(Vendas $vendaEntity): Vendas
-    {
-        // TODO: Implement update() method.
-    }
-
-    public function delete(Vendas $vendaEntity): bool
-    {
-        // TODO: Implement delete() method.
     }
 }
