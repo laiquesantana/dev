@@ -39,7 +39,7 @@ Caso algum problema persista, rode os commandos que estão dentro da pasta indiv
 
 ## rodar testes
 
-- make tests ou docker exec -ti travellist-app ./vendor/bin/phpunit tests
+- make test ou docker exec -ti travellist-app ./vendor/bin/phpunit tests
 
 
 
