@@ -13,7 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('comprador')->nullable();
             $table->string('descricao')->nullable();
-            $table->string('quantidade')->nullable();
+            $table->double('quantidade')->nullable();
             $table->string('endereco', 500)->nullable();
             $table->string('fornecedor')->nullable();
             $table->double('preco_unitario', 16, 2)->nullable();
