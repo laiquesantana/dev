@@ -18,7 +18,6 @@ import moment from "moment";
 import Swal from "sweetalert2";
 import VueMask from "v-mask";
 import router from "./router";
-import ViaCep from 'vue-viacep';
 import Multiselect from 'vue-multiselect'
 import VueExcelXlsx from "vue-excel-xlsx";
 import money from 'v-money'
@@ -40,11 +39,7 @@ moment.locale("pt-br");
 import {
     VueMaskDirective
 } from 'v-mask'
-import VueCharts from 'vue-chartjs'
-import {
-    Bar,
-    Line
-} from 'vue-chartjs'
+
 
 const options = {
     color: "#bffaf3",
@@ -77,7 +72,6 @@ window.swal = Swal;
 window.moment = moment;
 
 //via cep
-Vue.use(ViaCep);
 Vue.component('multiselect', Multiselect)
 Vue.use(VueExcelXlsx);
 
@@ -128,10 +122,6 @@ Vue.filter("formatData", function (data) {
     return moment(data).format("LLL");
 });
 
-Vue.filter("corretora", function (data) {
-    return (data=== null || data === undefined)?'Não se aplica' : data.name ;
-});
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -179,39 +169,8 @@ const app = new Vue({
         permissions: {}
     },
     methods: {
-        searchit: _.debounce(() => {
-            Fire.$emit("searching");
-        }, 1000),
-        printme() {
-            window.print();
-        },
-
-        loadPermission() {
-            axios
-                .get("api/profile/permission", {
-                    // params: {
-                    //   permission: ['delete user', 'edit user']
-                    // }
-                })
-                .then(({
-                    data
-                }) => (this.permissions = data))
-                .catch(error => {
-                    Toast.fire({
-                        icon: "error",
-                        title: "Falha Ao Verificar Do Usuário!"
-                    })
-                });
-        },
-        hasPermission(permission) {
-            this.permissions.forEach(element => {
-                console.log(element);
-            });
-        }
-
 
     },
     mounted() {
-        // this.loadPermission();
     },
 });
