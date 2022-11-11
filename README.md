@@ -22,7 +22,7 @@
 - docker-compose exec app npm run production
 
 ## Passo 2
-- docker-compose exec app bash
+- docker-compose exec app bash ou através do makefile commando make php
 
 Ira abrir o terminal dentro do terminar, rode o comando
 ./scripts/migrateAndSedder
@@ -36,6 +36,12 @@ Caso algum problema persista, rode os commandos que estão dentro da pasta indiv
 - docker-compose exec app php artisan db:seed
 - docker-compose exec app php artisan permission:create-role superAdmin api
 - docker-compose exec app php artisan passport:install --force
+
+## rodar testes
+
+- make tests ou docker exec -ti travellist-app ./vendor/bin/phpunit tests
+
+
 
 
 ## Acessar aplicação
